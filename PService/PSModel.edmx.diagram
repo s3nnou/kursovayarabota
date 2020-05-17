@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a112ac26d8f5471cb73022dd966fb5dc" Name="Diagram1">
+        <EntityTypeShape EntityType="PSModel.active_debts" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.client_acc_table" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.clients_table" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.debt_table" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.metrics_archive" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.months_2020_table" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.service_metrcis" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.service_payments" Width="1.5" PointX="6" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.service_type" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.service_usage" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.staff_acc_table" Width="1.5" PointX="5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.virtual_money" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PSModel.worker_table" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="PSModel.FK_active_debts_clients_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_active_debts_debt_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_client_acc_table_clients_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_debt_table_clients_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_metrics_archive_clients_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_service_metrcis_clients_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_service_payments_clients_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_service_usage_clients_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_virtual_money_clients_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_debt_table_months_2020_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_debt_table_service_type" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_metrics_archive_months_2020_table" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_metrics_archive_service_type" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_service_metrcis_service_type" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_service_payments_service_type" ManuallyRouted="false" />
+        <AssociationConnector Association="PSModel.FK_staff_acc_table_worker_table" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

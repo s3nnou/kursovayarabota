@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6915876A-2B86-40A7-AA99-9CA2E446EEBB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PService</RootNamespace>
+    <AssemblyName>PService</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveDebtsView.cs" />
+    <Compile Include="active_debts.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthForm.designer.cs">
+      <DependentUpon>AuthForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clients_table.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="client_acc_table.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DebtHandler.cs" />
+    <Compile Include="debt_table.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EasyDataRepresentation.cs" />
+    <Compile Include="EasyVirtualMoneyRepresentation.cs" />
+    <Compile Include="EasyDebtRecordsRepresentation.cs" />
+    <Compile Include="EasyPaymentsRepresentation.cs" />
+    <Compile Include="LablingService.cs" />
+    <Compile Include="MainFormDir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormDir.designer.cs">
+      <DependentUpon>MainFormDir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormAcc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormAcc.designer.cs">
+      <DependentUpon>MainFormAcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormHH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormHH.designer.cs">
+      <DependentUpon>MainFormHH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormEconom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormEconom.designer.cs">
+      <DependentUpon>MainFormEconom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormClient.designer.cs">
+      <DependentUpon>MainFormClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageService.cs" />
+    <Compile Include="metrics_archive.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Misc.cs" />
+    <Compile Include="months_2020_table.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentHandler.cs" />
+    <Compile Include="PaymentsStates.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PSModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ServicePayRequests.cs" />
+    <Compile Include="ServicesHandler.cs" />
+    <Compile Include="service_metrcis.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="service_payments.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="service_type.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="service_usage.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="staff_acc_table.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="virtual_money.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WordFileGenerator.cs" />
+    <Compile Include="worker_table.cs">
+      <DependentUpon>PSModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AuthForm.resx">
+      <DependentUpon>AuthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormDir.resx">
+      <DependentUpon>MainFormDir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormAcc.resx">
+      <DependentUpon>MainFormAcc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormHH.resx">
+      <DependentUpon>MainFormHH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormEconom.resx">
+      <DependentUpon>MainFormEconom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormClient.resx">
+      <DependentUpon>MainFormClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\active_debts.datasource" />
+    <None Include="Properties\DataSources\clients_table.datasource" />
+    <None Include="Properties\DataSources\metrics_archive.datasource" />
+    <None Include="Properties\DataSources\months_2020_table.datasource" />
+    <None Include="Properties\DataSources\service_payments.datasource" />
+    <None Include="Properties\DataSources\service_type.datasource" />
+    <None Include="Properties\DataSources\staff_acc_table.datasource" />
+    <None Include="Properties\DataSources\worker_table.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EntityDeploy Include="PSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PSModel.edmx.diagram">
+      <DependentUpon>PSModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PSModel.edmx</DependentUpon>
+      <LastGenOutput>PSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PSModel.edmx</DependentUpon>
+      <LastGenOutput>PSModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>

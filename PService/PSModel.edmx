@@ -1,0 +1,1064 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PSModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="active_debts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="debt_id" Type="int" />
+          <Property Name="client_id" Type="int" />
+        </EntityType>
+        <EntityType Name="client_acc_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="ntext" />
+          <Property Name="password" Type="ntext" />
+          <Property Name="client_id" Type="int" />
+        </EntityType>
+        <EntityType Name="clients_table">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="ntext" />
+          <Property Name="phone_number" Type="int" />
+          <Property Name="street" Type="ntext" />
+          <Property Name="house" Type="nchar" MaxLength="10" />
+          <Property Name="flat" Type="nchar" MaxLength="10" />
+          <Property Name="persons" Type="int" />
+          <Property Name="dwelling_space" Type="float" />
+        </EntityType>
+        <EntityType Name="debt_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="service_id" Type="int" />
+          <Property Name="month_id" Type="int" />
+          <Property Name="debt" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="metrics_archive">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="service_id" Type="int" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="month_id" Type="int" />
+          <Property Name="usage" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="months_2020_table">
+          <Key>
+            <PropertyRef Name="month_id" />
+          </Key>
+          <Property Name="month_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="service_metrcis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="service_id" Type="int" />
+          <Property Name="prev_month" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="curr_month" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="last_checkup" Type="int" />
+        </EntityType>
+        <EntityType Name="service_payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="service_id" Type="int" />
+          <Property Name="date" Type="int" />
+          <Property Name="usage" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="service_type">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="ntext" />
+          <Property Name="metrics" Type="nchar" MaxLength="10" />
+          <Property Name="tariff" Type="float" />
+        </EntityType>
+        <EntityType Name="service_usage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="service_1" Type="bit" />
+          <Property Name="service_2" Type="bit" />
+          <Property Name="service_3" Type="bit" />
+          <Property Name="service_4" Type="bit" />
+          <Property Name="service_5" Type="bit" />
+          <Property Name="service_6" Type="bit" />
+          <Property Name="service_7" Type="bit" />
+        </EntityType>
+        <EntityType Name="staff_acc_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="ntext" />
+          <Property Name="password" Type="ntext" />
+          <Property Name="worker_id" Type="int" />
+          <Property Name="role_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="virtual_money">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="money" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="service_id" Type="int" />
+        </EntityType>
+        <EntityType Name="worker_table">
+          <Key>
+            <PropertyRef Name="worker_id" />
+          </Key>
+          <Property Name="worker_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="ntext" />
+          <Property Name="phone_number" Type="int" />
+          <Property Name="street" Type="ntext" />
+          <Property Name="flat" Type="nchar" MaxLength="10" />
+          <Property Name="house" Type="nchar" MaxLength="10" />
+          <Property Name="job" Type="ntext" />
+          <Property Name="wage" Type="float" />
+        </EntityType>
+        <Association Name="FK_active_debts_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="active_debts" Type="Self.active_debts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="active_debts">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_active_debts_debt_table">
+          <End Role="debt_table" Type="Self.debt_table" Multiplicity="0..1" />
+          <End Role="active_debts" Type="Self.active_debts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="debt_table">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="active_debts">
+              <PropertyRef Name="debt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_client_acc_table_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="client_acc_table" Type="Self.client_acc_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="client_acc_table">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_table_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="debt_table" Type="Self.debt_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="debt_table">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_table_months_2020_table">
+          <End Role="months_2020_table" Type="Self.months_2020_table" Multiplicity="0..1" />
+          <End Role="debt_table" Type="Self.debt_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="months_2020_table">
+              <PropertyRef Name="month_id" />
+            </Principal>
+            <Dependent Role="debt_table">
+              <PropertyRef Name="month_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_table_service_type">
+          <End Role="service_type" Type="Self.service_type" Multiplicity="0..1" />
+          <End Role="debt_table" Type="Self.debt_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service_type">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="debt_table">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_metrics_archive_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="metrics_archive" Type="Self.metrics_archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="metrics_archive">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_metrics_archive_months_2020_table">
+          <End Role="months_2020_table" Type="Self.months_2020_table" Multiplicity="0..1" />
+          <End Role="metrics_archive" Type="Self.metrics_archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="months_2020_table">
+              <PropertyRef Name="month_id" />
+            </Principal>
+            <Dependent Role="metrics_archive">
+              <PropertyRef Name="month_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_metrics_archive_service_type">
+          <End Role="service_type" Type="Self.service_type" Multiplicity="0..1" />
+          <End Role="metrics_archive" Type="Self.metrics_archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service_type">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="metrics_archive">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_metrcis_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="service_metrcis" Type="Self.service_metrcis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="service_metrcis">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_metrcis_service_type">
+          <End Role="service_type" Type="Self.service_type" Multiplicity="0..1" />
+          <End Role="service_metrcis" Type="Self.service_metrcis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service_type">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="service_metrcis">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_payments_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="service_payments" Type="Self.service_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="service_payments">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_payments_service_type">
+          <End Role="service_type" Type="Self.service_type" Multiplicity="0..1" />
+          <End Role="service_payments" Type="Self.service_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service_type">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="service_payments">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_usage_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="service_usage" Type="Self.service_usage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="service_usage">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_acc_table_worker_table">
+          <End Role="worker_table" Type="Self.worker_table" Multiplicity="0..1" />
+          <End Role="staff_acc_table" Type="Self.staff_acc_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="worker_table">
+              <PropertyRef Name="worker_id" />
+            </Principal>
+            <Dependent Role="staff_acc_table">
+              <PropertyRef Name="worker_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_virtual_money_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="virtual_money" Type="Self.virtual_money" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="virtual_money">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PSModelContainer">
+          <EntitySet Name="active_debts" EntityType="Self.active_debts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="client_acc_table" EntityType="Self.client_acc_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clients_table" EntityType="Self.clients_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="debt_table" EntityType="Self.debt_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="metrics_archive" EntityType="Self.metrics_archive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="months_2020_table" EntityType="Self.months_2020_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service_metrcis" EntityType="Self.service_metrcis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service_payments" EntityType="Self.service_payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service_type" EntityType="Self.service_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service_usage" EntityType="Self.service_usage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="staff_acc_table" EntityType="Self.staff_acc_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="virtual_money" EntityType="Self.virtual_money" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="worker_table" EntityType="Self.worker_table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_active_debts_clients_table" Association="Self.FK_active_debts_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="active_debts" EntitySet="active_debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_active_debts_debt_table" Association="Self.FK_active_debts_debt_table">
+            <End Role="debt_table" EntitySet="debt_table" />
+            <End Role="active_debts" EntitySet="active_debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_client_acc_table_clients_table" Association="Self.FK_client_acc_table_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="client_acc_table" EntitySet="client_acc_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_table_clients_table" Association="Self.FK_debt_table_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="debt_table" EntitySet="debt_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_table_months_2020_table" Association="Self.FK_debt_table_months_2020_table">
+            <End Role="months_2020_table" EntitySet="months_2020_table" />
+            <End Role="debt_table" EntitySet="debt_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_table_service_type" Association="Self.FK_debt_table_service_type">
+            <End Role="service_type" EntitySet="service_type" />
+            <End Role="debt_table" EntitySet="debt_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_metrics_archive_clients_table" Association="Self.FK_metrics_archive_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="metrics_archive" EntitySet="metrics_archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_metrics_archive_months_2020_table" Association="Self.FK_metrics_archive_months_2020_table">
+            <End Role="months_2020_table" EntitySet="months_2020_table" />
+            <End Role="metrics_archive" EntitySet="metrics_archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_metrics_archive_service_type" Association="Self.FK_metrics_archive_service_type">
+            <End Role="service_type" EntitySet="service_type" />
+            <End Role="metrics_archive" EntitySet="metrics_archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_metrcis_clients_table" Association="Self.FK_service_metrcis_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="service_metrcis" EntitySet="service_metrcis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_metrcis_service_type" Association="Self.FK_service_metrcis_service_type">
+            <End Role="service_type" EntitySet="service_type" />
+            <End Role="service_metrcis" EntitySet="service_metrcis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_payments_clients_table" Association="Self.FK_service_payments_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="service_payments" EntitySet="service_payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_payments_service_type" Association="Self.FK_service_payments_service_type">
+            <End Role="service_type" EntitySet="service_type" />
+            <End Role="service_payments" EntitySet="service_payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_usage_clients_table" Association="Self.FK_service_usage_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="service_usage" EntitySet="service_usage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_acc_table_worker_table" Association="Self.FK_staff_acc_table_worker_table">
+            <End Role="worker_table" EntitySet="worker_table" />
+            <End Role="staff_acc_table" EntitySet="staff_acc_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_virtual_money_clients_table" Association="Self.FK_virtual_money_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="virtual_money" EntitySet="virtual_money" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="active_debts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="debt_id" Type="Int32" />
+          <Property Name="client_id" Type="Int32" />
+          <NavigationProperty Name="clients_table" Relationship="Self.FK_active_debts_clients_table" FromRole="active_debts" ToRole="clients_table" />
+          <NavigationProperty Name="debt_table" Relationship="Self.FK_active_debts_debt_table" FromRole="active_debts" ToRole="debt_table" />
+        </EntityType>
+        <EntityType Name="client_acc_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="client_id" Type="Int32" />
+          <NavigationProperty Name="clients_table" Relationship="Self.FK_client_acc_table_clients_table" FromRole="client_acc_table" ToRole="clients_table" />
+        </EntityType>
+        <EntityType Name="clients_table">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="Int32" />
+          <Property Name="street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="house" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="flat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="persons" Type="Int32" />
+          <Property Name="dwelling_space" Type="Double" />
+          <NavigationProperty Name="active_debts" Relationship="Self.FK_active_debts_clients_table" FromRole="clients_table" ToRole="active_debts" />
+          <NavigationProperty Name="client_acc_table" Relationship="Self.FK_client_acc_table_clients_table" FromRole="clients_table" ToRole="client_acc_table" />
+          <NavigationProperty Name="debt_table" Relationship="Self.FK_debt_table_clients_table" FromRole="clients_table" ToRole="debt_table" />
+          <NavigationProperty Name="metrics_archive" Relationship="Self.FK_metrics_archive_clients_table" FromRole="clients_table" ToRole="metrics_archive" />
+          <NavigationProperty Name="service_metrcis" Relationship="Self.FK_service_metrcis_clients_table" FromRole="clients_table" ToRole="service_metrcis" />
+          <NavigationProperty Name="service_payments" Relationship="Self.FK_service_payments_clients_table" FromRole="clients_table" ToRole="service_payments" />
+          <NavigationProperty Name="service_usage" Relationship="Self.FK_service_usage_clients_table" FromRole="clients_table" ToRole="service_usage" />
+          <NavigationProperty Name="virtual_money" Relationship="Self.FK_virtual_money_clients_table" FromRole="clients_table" ToRole="virtual_money" />
+        </EntityType>
+        <EntityType Name="debt_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="service_id" Type="Int32" />
+          <Property Name="month_id" Type="Int32" />
+          <Property Name="debt" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="active_debts" Relationship="Self.FK_active_debts_debt_table" FromRole="debt_table" ToRole="active_debts" />
+          <NavigationProperty Name="clients_table" Relationship="Self.FK_debt_table_clients_table" FromRole="debt_table" ToRole="clients_table" />
+          <NavigationProperty Name="months_2020_table" Relationship="Self.FK_debt_table_months_2020_table" FromRole="debt_table" ToRole="months_2020_table" />
+          <NavigationProperty Name="service_type" Relationship="Self.FK_debt_table_service_type" FromRole="debt_table" ToRole="service_type" />
+        </EntityType>
+        <EntityType Name="metrics_archive">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="service_id" Type="Int32" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="month_id" Type="Int32" />
+          <Property Name="usage" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="clients_table" Relationship="Self.FK_metrics_archive_clients_table" FromRole="metrics_archive" ToRole="clients_table" />
+          <NavigationProperty Name="months_2020_table" Relationship="Self.FK_metrics_archive_months_2020_table" FromRole="metrics_archive" ToRole="months_2020_table" />
+          <NavigationProperty Name="service_type" Relationship="Self.FK_metrics_archive_service_type" FromRole="metrics_archive" ToRole="service_type" />
+        </EntityType>
+        <EntityType Name="months_2020_table">
+          <Key>
+            <PropertyRef Name="month_id" />
+          </Key>
+          <Property Name="month_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="debt_table" Relationship="Self.FK_debt_table_months_2020_table" FromRole="months_2020_table" ToRole="debt_table" />
+          <NavigationProperty Name="metrics_archive" Relationship="Self.FK_metrics_archive_months_2020_table" FromRole="months_2020_table" ToRole="metrics_archive" />
+        </EntityType>
+        <EntityType Name="service_metrcis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="service_id" Type="Int32" />
+          <Property Name="prev_month" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="curr_month" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="last_checkup" Type="Int32" />
+          <NavigationProperty Name="clients_table" Relationship="Self.FK_service_metrcis_clients_table" FromRole="service_metrcis" ToRole="clients_table" />
+          <NavigationProperty Name="service_type" Relationship="Self.FK_service_metrcis_service_type" FromRole="service_metrcis" ToRole="service_type" />
+        </EntityType>
+        <EntityType Name="service_payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="service_id" Type="Int32" />
+          <Property Name="date" Type="Int32" />
+          <Property Name="usage" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="clients_table" Relationship="Self.FK_service_payments_clients_table" FromRole="service_payments" ToRole="clients_table" />
+          <NavigationProperty Name="service_type" Relationship="Self.FK_service_payments_service_type" FromRole="service_payments" ToRole="service_type" />
+        </EntityType>
+        <EntityType Name="service_type">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="metrics" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="tariff" Type="Double" />
+          <NavigationProperty Name="debt_table" Relationship="Self.FK_debt_table_service_type" FromRole="service_type" ToRole="debt_table" />
+          <NavigationProperty Name="metrics_archive" Relationship="Self.FK_metrics_archive_service_type" FromRole="service_type" ToRole="metrics_archive" />
+          <NavigationProperty Name="service_metrcis" Relationship="Self.FK_service_metrcis_service_type" FromRole="service_type" ToRole="service_metrcis" />
+          <NavigationProperty Name="service_payments" Relationship="Self.FK_service_payments_service_type" FromRole="service_type" ToRole="service_payments" />
+        </EntityType>
+        <EntityType Name="service_usage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="service_1" Type="Boolean" />
+          <Property Name="service_2" Type="Boolean" />
+          <Property Name="service_3" Type="Boolean" />
+          <Property Name="service_4" Type="Boolean" />
+          <Property Name="service_5" Type="Boolean" />
+          <Property Name="service_6" Type="Boolean" />
+          <Property Name="service_7" Type="Boolean" />
+          <NavigationProperty Name="clients_table" Relationship="Self.FK_service_usage_clients_table" FromRole="service_usage" ToRole="clients_table" />
+        </EntityType>
+        <EntityType Name="staff_acc_table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="worker_id" Type="Int32" />
+          <Property Name="role_id" Type="Int32" />
+          <NavigationProperty Name="worker_table" Relationship="Self.FK_staff_acc_table_worker_table" FromRole="staff_acc_table" ToRole="worker_table" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="virtual_money">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="money" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="service_id" Type="Int32" />
+          <NavigationProperty Name="clients_table" Relationship="Self.FK_virtual_money_clients_table" FromRole="virtual_money" ToRole="clients_table" />
+        </EntityType>
+        <EntityType Name="worker_table">
+          <Key>
+            <PropertyRef Name="worker_id" />
+          </Key>
+          <Property Name="worker_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="Int32" />
+          <Property Name="street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="flat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="house" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="wage" Type="Double" />
+          <NavigationProperty Name="staff_acc_table" Relationship="Self.FK_staff_acc_table_worker_table" FromRole="worker_table" ToRole="staff_acc_table" />
+        </EntityType>
+        <Association Name="FK_active_debts_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="active_debts" Type="Self.active_debts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="active_debts">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_active_debts_debt_table">
+          <End Role="debt_table" Type="Self.debt_table" Multiplicity="0..1" />
+          <End Role="active_debts" Type="Self.active_debts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="debt_table">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="active_debts">
+              <PropertyRef Name="debt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_client_acc_table_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="client_acc_table" Type="Self.client_acc_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="client_acc_table">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_table_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="debt_table" Type="Self.debt_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="debt_table">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_metrics_archive_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="metrics_archive" Type="Self.metrics_archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="metrics_archive">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_metrcis_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="service_metrcis" Type="Self.service_metrcis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="service_metrcis">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_payments_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="service_payments" Type="Self.service_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="service_payments">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_usage_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="service_usage" Type="Self.service_usage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="service_usage">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_virtual_money_clients_table">
+          <End Role="clients_table" Type="Self.clients_table" Multiplicity="0..1" />
+          <End Role="virtual_money" Type="Self.virtual_money" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients_table">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="virtual_money">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_table_months_2020_table">
+          <End Role="months_2020_table" Type="Self.months_2020_table" Multiplicity="0..1" />
+          <End Role="debt_table" Type="Self.debt_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="months_2020_table">
+              <PropertyRef Name="month_id" />
+            </Principal>
+            <Dependent Role="debt_table">
+              <PropertyRef Name="month_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_debt_table_service_type">
+          <End Role="service_type" Type="Self.service_type" Multiplicity="0..1" />
+          <End Role="debt_table" Type="Self.debt_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service_type">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="debt_table">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_metrics_archive_months_2020_table">
+          <End Role="months_2020_table" Type="Self.months_2020_table" Multiplicity="0..1" />
+          <End Role="metrics_archive" Type="Self.metrics_archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="months_2020_table">
+              <PropertyRef Name="month_id" />
+            </Principal>
+            <Dependent Role="metrics_archive">
+              <PropertyRef Name="month_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_metrics_archive_service_type">
+          <End Role="service_type" Type="Self.service_type" Multiplicity="0..1" />
+          <End Role="metrics_archive" Type="Self.metrics_archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service_type">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="metrics_archive">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_metrcis_service_type">
+          <End Role="service_type" Type="Self.service_type" Multiplicity="0..1" />
+          <End Role="service_metrcis" Type="Self.service_metrcis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service_type">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="service_metrcis">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_service_payments_service_type">
+          <End Role="service_type" Type="Self.service_type" Multiplicity="0..1" />
+          <End Role="service_payments" Type="Self.service_payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service_type">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="service_payments">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_acc_table_worker_table">
+          <End Role="worker_table" Type="Self.worker_table" Multiplicity="0..1" />
+          <End Role="staff_acc_table" Type="Self.staff_acc_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="worker_table">
+              <PropertyRef Name="worker_id" />
+            </Principal>
+            <Dependent Role="staff_acc_table">
+              <PropertyRef Name="worker_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PSEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="active_debts" EntityType="Self.active_debts" />
+          <EntitySet Name="client_acc_table" EntityType="Self.client_acc_table" />
+          <EntitySet Name="clients_table" EntityType="Self.clients_table" />
+          <EntitySet Name="debt_table" EntityType="Self.debt_table" />
+          <EntitySet Name="metrics_archive" EntityType="Self.metrics_archive" />
+          <EntitySet Name="months_2020_table" EntityType="Self.months_2020_table" />
+          <EntitySet Name="service_metrcis" EntityType="Self.service_metrcis" />
+          <EntitySet Name="service_payments" EntityType="Self.service_payments" />
+          <EntitySet Name="service_type" EntityType="Self.service_type" />
+          <EntitySet Name="service_usage" EntityType="Self.service_usage" />
+          <EntitySet Name="staff_acc_table" EntityType="Self.staff_acc_table" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="virtual_money" EntityType="Self.virtual_money" />
+          <EntitySet Name="worker_table" EntityType="Self.worker_table" />
+          <AssociationSet Name="FK_active_debts_clients_table" Association="Self.FK_active_debts_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="active_debts" EntitySet="active_debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_active_debts_debt_table" Association="Self.FK_active_debts_debt_table">
+            <End Role="debt_table" EntitySet="debt_table" />
+            <End Role="active_debts" EntitySet="active_debts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_client_acc_table_clients_table" Association="Self.FK_client_acc_table_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="client_acc_table" EntitySet="client_acc_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_table_clients_table" Association="Self.FK_debt_table_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="debt_table" EntitySet="debt_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_metrics_archive_clients_table" Association="Self.FK_metrics_archive_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="metrics_archive" EntitySet="metrics_archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_metrcis_clients_table" Association="Self.FK_service_metrcis_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="service_metrcis" EntitySet="service_metrcis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_payments_clients_table" Association="Self.FK_service_payments_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="service_payments" EntitySet="service_payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_usage_clients_table" Association="Self.FK_service_usage_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="service_usage" EntitySet="service_usage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_virtual_money_clients_table" Association="Self.FK_virtual_money_clients_table">
+            <End Role="clients_table" EntitySet="clients_table" />
+            <End Role="virtual_money" EntitySet="virtual_money" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_table_months_2020_table" Association="Self.FK_debt_table_months_2020_table">
+            <End Role="months_2020_table" EntitySet="months_2020_table" />
+            <End Role="debt_table" EntitySet="debt_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_debt_table_service_type" Association="Self.FK_debt_table_service_type">
+            <End Role="service_type" EntitySet="service_type" />
+            <End Role="debt_table" EntitySet="debt_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_metrics_archive_months_2020_table" Association="Self.FK_metrics_archive_months_2020_table">
+            <End Role="months_2020_table" EntitySet="months_2020_table" />
+            <End Role="metrics_archive" EntitySet="metrics_archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_metrics_archive_service_type" Association="Self.FK_metrics_archive_service_type">
+            <End Role="service_type" EntitySet="service_type" />
+            <End Role="metrics_archive" EntitySet="metrics_archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_metrcis_service_type" Association="Self.FK_service_metrcis_service_type">
+            <End Role="service_type" EntitySet="service_type" />
+            <End Role="service_metrcis" EntitySet="service_metrcis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_service_payments_service_type" Association="Self.FK_service_payments_service_type">
+            <End Role="service_type" EntitySet="service_type" />
+            <End Role="service_payments" EntitySet="service_payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_acc_table_worker_table" Association="Self.FK_staff_acc_table_worker_table">
+            <End Role="worker_table" EntitySet="worker_table" />
+            <End Role="staff_acc_table" EntitySet="staff_acc_table" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PSModelContainer" CdmEntityContainer="PSEntity">
+          <EntitySetMapping Name="active_debts">
+            <EntityTypeMapping TypeName="PSModel.active_debts">
+              <MappingFragment StoreEntitySet="active_debts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="debt_id" ColumnName="debt_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client_acc_table">
+            <EntityTypeMapping TypeName="PSModel.client_acc_table">
+              <MappingFragment StoreEntitySet="client_acc_table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients_table">
+            <EntityTypeMapping TypeName="PSModel.clients_table">
+              <MappingFragment StoreEntitySet="clients_table">
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="flat" ColumnName="flat" />
+                <ScalarProperty Name="persons" ColumnName="persons" />
+                <ScalarProperty Name="dwelling_space" ColumnName="dwelling_space" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="debt_table">
+            <EntityTypeMapping TypeName="PSModel.debt_table">
+              <MappingFragment StoreEntitySet="debt_table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="month_id" ColumnName="month_id" />
+                <ScalarProperty Name="debt" ColumnName="debt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="metrics_archive">
+            <EntityTypeMapping TypeName="PSModel.metrics_archive">
+              <MappingFragment StoreEntitySet="metrics_archive">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="month_id" ColumnName="month_id" />
+                <ScalarProperty Name="usage" ColumnName="usage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="months_2020_table">
+            <EntityTypeMapping TypeName="PSModel.months_2020_table">
+              <MappingFragment StoreEntitySet="months_2020_table">
+                <ScalarProperty Name="month_id" ColumnName="month_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service_metrcis">
+            <EntityTypeMapping TypeName="PSModel.service_metrcis">
+              <MappingFragment StoreEntitySet="service_metrcis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="prev_month" ColumnName="prev_month" />
+                <ScalarProperty Name="curr_month" ColumnName="curr_month" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="last_checkup" ColumnName="last_checkup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service_payments">
+            <EntityTypeMapping TypeName="PSModel.service_payments">
+              <MappingFragment StoreEntitySet="service_payments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="usage" ColumnName="usage" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service_type">
+            <EntityTypeMapping TypeName="PSModel.service_type">
+              <MappingFragment StoreEntitySet="service_type">
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="metrics" ColumnName="metrics" />
+                <ScalarProperty Name="tariff" ColumnName="tariff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service_usage">
+            <EntityTypeMapping TypeName="PSModel.service_usage">
+              <MappingFragment StoreEntitySet="service_usage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="service_1" ColumnName="service_1" />
+                <ScalarProperty Name="service_2" ColumnName="service_2" />
+                <ScalarProperty Name="service_3" ColumnName="service_3" />
+                <ScalarProperty Name="service_4" ColumnName="service_4" />
+                <ScalarProperty Name="service_5" ColumnName="service_5" />
+                <ScalarProperty Name="service_6" ColumnName="service_6" />
+                <ScalarProperty Name="service_7" ColumnName="service_7" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staff_acc_table">
+            <EntityTypeMapping TypeName="PSModel.staff_acc_table">
+              <MappingFragment StoreEntitySet="staff_acc_table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="worker_id" ColumnName="worker_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PSModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="virtual_money">
+            <EntityTypeMapping TypeName="PSModel.virtual_money">
+              <MappingFragment StoreEntitySet="virtual_money">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="worker_table">
+            <EntityTypeMapping TypeName="PSModel.worker_table">
+              <MappingFragment StoreEntitySet="worker_table">
+                <ScalarProperty Name="worker_id" ColumnName="worker_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="flat" ColumnName="flat" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="wage" ColumnName="wage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
